@@ -1,0 +1,94 @@
+﻿@model JobSearch.Models.Job
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Job</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Job_Number)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Job_Number)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Applied)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date_Applied)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Contacts)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Contact Name</th>
+                    <th>Phone Number</th>
+                    <th>Company</th>
+                    <th>Email</th>
+                </tr>
+                @foreach (var item in Model.Contacts)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone_Number)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Company)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                </tr>
+        }
+            </table>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Note Type</th>
+                    <th>Description</th>
+                </tr>
+                @foreach (var item in Model.Notes)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Note_type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.JobID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

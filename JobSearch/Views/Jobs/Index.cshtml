@@ -1,0 +1,53 @@
+﻿@model IEnumerable<JobSearch.Models.Job>
+
+@{
+    ViewData["Title"] = "Jobs";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Job_Number)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date_Applied)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td style="word-wrap:break-word">
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Job_Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date_Applied)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.JobID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.JobID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.JobID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
